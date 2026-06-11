@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Judgy settings</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      max-width: 640px;
+      margin: 40px auto;
+      padding: 0 20px 60px;
+      color: #1d1d1f;
+      background: #fafafa;
+      line-height: 1.5;
+    }
+    h1 { font-size: 24px; margin-bottom: 4px; }
+    .subtitle { color: #6e6e73; margin-top: 0; font-size: 14px; }
+    h2 { font-size: 16px; margin: 32px 0 8px; }
+    .hint { font-size: 12px; color: #9a9aa0; margin: 2px 0 8px; }
+    input[type="text"], textarea, select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 8px 10px;
+      border: 1px solid #d2d2d7;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      background: #fff;
+    }
+    input[type="text"] { margin-bottom: 8px; }
+    textarea { height: 120px; resize: vertical; font-family: ui-monospace, monospace; font-size: 13px; }
+    select { width: auto; }
+    .row { display: flex; gap: 24px; flex-wrap: wrap; }
+    .row > div { flex: 1; min-width: 220px; }
+    button#save {
+      margin-top: 28px;
+      padding: 10px 22px;
+      border: none;
+      border-radius: 8px;
+      background: #1d1d1f;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button#save:hover { background: #3a3a3c; }
+    #status { margin-left: 12px; color: #3a9e5f; font-size: 13px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; margin-top: 8px; }
+    th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid #e5e5ea; }
+    th { color: #6e6e73; font-weight: 600; font-size: 12px; }
+    td.num { font-variant-numeric: tabular-nums; }
+    .empty { color: #9a9aa0; font-size: 13px; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #1c1c1e; color: #f2f2f4; }
+      input[type="text"], textarea, select { background: #2c2c2e; border-color: #3a3a3c; color: #f2f2f4; }
+      th, td { border-color: #3a3a3c; }
+      button#save { background: #f2f2f4; color: #1d1d1f; }
+      button#save:hover { background: #d8d8dc; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Judgy</h1>
+  <p class="subtitle">All data stays on this device. Nothing is ever sent anywhere.</p>
+
+  <h2>Your goals</h2>
+  <p class="hint">Up to three. Messages will throw these back at you.</p>
+  <input type="text" id="goal1" placeholder="e.g. financial stability" />
+  <input type="text" id="goal2" placeholder="e.g. publish the newsletter monthly" />
+  <input type="text" id="goal3" placeholder="e.g. write consistently" />
+
+  <h2>Sites</h2>
+  <div class="row">
+    <div>
+      <p class="hint">Time-sinks (one per line, judged)</p>
+      <textarea id="sinks"></textarea>
+    </div>
+    <div>
+      <p class="hint">Virtue sites (one per line, encouraged)</p>
+      <textarea id="virtues"></textarea>
+    </div>
+  </div>
+  <p class="hint">Domains match subdomains too. Add a path to target part of a site, e.g. <code>linkedin.com/feed</code>. Everything else shows a timer only.</p>
+
+  <h2>Behaviour</h2>
+  <div class="row">
+    <div>
+      <p class="hint">Tone</p>
+      <select id="tone">
+        <option value="gentle">Gentle</option>
+        <option value="snarky">Snarky</option>
+        <option value="brutal">Brutal</option>
+      </select>
+    </div>
+    <div>
+      <p class="hint">Widget position</p>
+      <select id="position">
+        <option value="bottom-right">Bottom right</option>
+        <option value="bottom-left">Bottom left</option>
+        <option value="top-right">Top right</option>
+        <option value="top-left">Top left</option>
+      </select>
+    </div>
+  </div>
+
+  <div>
+    <button id="save">Save</button>
+    <span id="status"></span>
+  </div>
+
+  <h2>Last 7 days on time-sinks</h2>
+  <div id="history"></div>
+
+  <script src="defaults.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
