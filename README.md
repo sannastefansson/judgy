@@ -31,6 +31,6 @@ All data stays on your device in local extension storage. The extension makes **
 - **Three goals** — messages reference these ("That's how '{goal}' gets done, is it?")
 - **Site lists** — editable, one domain per line; paths work too (`linkedin.com/feed`)
 - **Tone** — gentle, snarky, or brutal
-- **History** — last 7 days of time-sink totals, shown on the settings page
+- **History** — last 7 days of time-sinks and virtue sites with a verdict per row, shown on the settings page
 
 The timer counts only the active tab in a focused window, and pauses after 60 seconds of inactivity. Daily totals reset at midnight.
