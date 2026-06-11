@@ -1,4 +1,4 @@
-# Judgy
+# Judgy Sanna
 
 A browser extension that judges your time-wasting and cheers your real work.
 
