@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Judgy Sanna",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Judges your time-wasting, cheers your real work. All data stays on your device. Zero network requests.",
   "permissions": ["storage", "idle", "tabs", "alarms"],
   "background": {
