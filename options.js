@@ -46,8 +46,11 @@ async function renderHistory() {
   for (const date of Object.keys(days).sort().reverse().slice(0, 7)) {
     const domains = days[date];
     for (const [domain, seconds] of Object.entries(domains)) {
+      if (seconds < 30) continue;
       const isSink = settings.sinks.some((e) => judgyMatchEntry(domain, "/", e.split("/")[0]));
-      if (isSink && seconds >= 30) rows.push({ date, domain, seconds });
+      const isVirtue = settings.virtues.some((e) => judgyMatchEntry(domain, "/", e.split("/")[0]));
+      if (isSink) rows.push({ date, domain, seconds, type: "wasted" });
+      else if (isVirtue) rows.push({ date, domain, seconds, type: "well spent" });
     }
   }
 
@@ -58,14 +61,15 @@ async function renderHistory() {
   }
   rows.sort((a, b) => (a.date === b.date ? b.seconds - a.seconds : a.date < b.date ? 1 : -1));
   const table = document.createElement("table");
-  table.innerHTML = `<tr><th>Date</th><th>Site</th><th>Time</th></tr>`;
+  table.innerHTML = `<tr><th>Date</th><th>Site</th><th>Time</th><th>Verdict</th></tr>`;
   for (const r of rows) {
     const tr = document.createElement("tr");
-    const cells = [r.date, r.domain, judgyFormatDuration(r.seconds)];
+    const cells = [r.date, r.domain, judgyFormatDuration(r.seconds), r.type];
     cells.forEach((text, i) => {
       const td = document.createElement("td");
       td.textContent = text;
       if (i === 2) td.className = "num";
+      if (i === 3) td.className = r.type === "wasted" ? "verdict-sink" : "verdict-virtue";
       tr.appendChild(td);
     });
     table.appendChild(tr);
