@@ -6,6 +6,15 @@ A browser extension that judges your time-wasting and cheers your real work.
 - **Virtue sites** (your blog, your writing tools) get the timer plus encouragement.
 - **Everything else** gets a quiet timer only, with one-click buttons to classify the site.
 
+## Screenshots
+
+<p float="left">
+  <img src="screenshots/linkedin-sink-1.png" width="280" />
+  <img src="screenshots/x-sink.png" width="280" />
+  <img src="screenshots/linkedin-sink-2.png" width="280" />
+  <img src="screenshots/github-virtue.png" width="280" />
+</p>
+
 ## Privacy
 
 All data stays on your device in local extension storage. The extension makes **zero network requests**. Nothing is collected, transmitted, or shared.
